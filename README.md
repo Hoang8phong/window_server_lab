@@ -73,6 +73,38 @@ This is a homelab project simulating a small enterorise IT environment using Win
     - Can ping from DC01 to Client01 and Client02
 ---
 
+## Group Policy: Block Command Prompt
+
+### GPO Creation
+
+- On DC01, open **Group Policy Management**
+- Created new GPO: `CMDBlock`
+- Linked it to `Testuser` OU
+
+### GPO Configuration
+
+**Path**
+User Configuration > Administrative Templates > System > Prevent access to the command prompt
+- Set to: `Enabled`
+- Choose "Yes"
+
+### Result
+- Logged into Client02 as `lab\vuhoang` > attemped to open `cmd` --> recieved message: "The command prompt has been disable by your administrator"
+
+### GPO Backup: CMDBlock
+
+- This folder contains a backup of the `CMDBlock` GPO created in out Active Directory Lab.
+- The policy prvents doamin users in specific OU from accessing the Command Prompt (`cmd.exe`), including disabling batch file execution.
+
+### Contents
+
+- `GPO.xml` - The actual GPO configuration
+- `greport.xml` - Structured report of GPO settings
+- `greport.html` - Human-readable HTML report
+
+(will link the file soon)
+---
+
 ## Task Completed
 
 - Installed and configured Windows Server 2019
